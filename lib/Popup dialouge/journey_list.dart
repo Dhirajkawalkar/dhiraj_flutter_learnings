@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'list_widgets.dart';
+import 'package:popup_dialouge/Popup dialouge/list_widgets.dart';
 
 
 // class TimelineItemWidget extends StatelessWidget {

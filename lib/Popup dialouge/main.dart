@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_line/dotted_line.dart';
-import 'package:popup_dialouge/popup_screen.dart';
-import 'package:popup_dialouge/test_main.dart';
+import 'package:popup_dialouge/Popup%20dialouge/popup_screen.dart';
+import 'package:popup_dialouge/Popup%20dialouge/test_main.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 import 'journey_list.dart';
 import 'package:dash/dash.dart';
