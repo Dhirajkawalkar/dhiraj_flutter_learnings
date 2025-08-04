@@ -16,6 +16,15 @@ class PopupScreen extends StatefulWidget {
 }
 
 class _PopupScreenState extends State<PopupScreen> {
+
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   bool isExpanded = false;
 
   @override
@@ -155,6 +164,8 @@ class _PopupScreenState extends State<PopupScreen> {
 
                           SizedBox(height: 24.h,),
 
+
+                          //New journey white container
                           Container(
                             height: 46.h,
                             width: 280.w,
@@ -209,56 +220,111 @@ class _PopupScreenState extends State<PopupScreen> {
                           SizedBox(height: 2.h,),
 
                           Expanded(
-                            child: SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.only(left: 8, top: 6),
-                                    height: 900.h,
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: Color(0x4DFFFFFF),
-                                      borderRadius: BorderRadius.circular(6),
-                                    ),
-
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Icon(Icons.warning, color: Color(0xffCD4E00), size: 12.sp,),
-
-                                            SizedBox(width: 6.w,),
-
-                                            Text("Updated Parcel Journey If Added to Your Route", style: TextStyle(fontSize: 10.sp, color: Color(0xffCD4E00),fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, letterSpacing: 0.25.sp),),
-
-                                            SizedBox(height: 6.64.h,),
-                                          ],
-                                        ),
-
-
-
-                                        SizedBox(height: 6.64.h,),
-
-                                      Expanded(
-                                        child: Column(
-                                          children: [
-                                            TimelineItemWidget(),
-                                            TimelineItemWidget(),
-                                          ],
-                                        )
+                            child: Scrollbar(
+                              controller: _scrollController,
+                              thumbVisibility: true,
+                              thickness: 6.0,
+                              radius: Radius.circular(4),
+                              child: SingleChildScrollView(
+                                controller: _scrollController,
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.only(left: 8, top: 6),
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: Color(0x4DFFFFFF),
+                                        borderRadius: BorderRadius.circular(6),
                                       ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Icon(Icons.warning, color: Color(0xffCD4E00), size: 12.sp),
+                                              SizedBox(width: 6.w),
+                                              Text(
+                                                "Updated Parcel Journey If Added to Your Route",
+                                                style: TextStyle(
+                                                  fontSize: 10.sp,
+                                                  color: Color(0xffCD4E00),
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.w400,
+                                                  letterSpacing: 0.25.sp,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          SizedBox(height: 6.64.h),
 
+                                          // 🟢 Timeline items
+                                          TimelineItemWidget(),
+                                          TimelineItemWidget(),
+                                          TimelineItemWidget(),
 
-
-                                      ],
+                                          SizedBox(height: 20.h),
+                                        ],
+                                      ),
                                     ),
-
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
+                          )
+
+
+                          //Old working
+                          // Expanded(
+                          //   child: SingleChildScrollView(
+                          //     child: Column(
+                          //       children: [
+                          //         Container(
+                          //           padding: EdgeInsets.only(left: 8, top: 6),
+                          //           height: 900.h,
+                          //           width: double.infinity,
+                          //           decoration: BoxDecoration(
+                          //             color: Color(0x4DFFFFFF),
+                          //             borderRadius: BorderRadius.circular(6),
+                          //           ),
+                          //
+                          //           child: Column(
+                          //             crossAxisAlignment: CrossAxisAlignment.start,
+                          //             children: [
+                          //               Row(
+                          //                 children: [
+                          //                   Icon(Icons.warning, color: Color(0xffCD4E00), size: 12.sp,),
+                          //
+                          //                   SizedBox(width: 6.w,),
+                          //
+                          //                   Text("Updated Parcel Journey If Added to Your Route", style: TextStyle(fontSize: 10.sp, color: Color(0xffCD4E00),fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, letterSpacing: 0.25.sp),),
+                          //
+                          //                   SizedBox(height: 6.64.h,),
+                          //                 ],
+                          //               ),
+                          //
+                          //
+                          //
+                          //               SizedBox(height: 6.64.h,),
+                          //
+                          //             Expanded(
+                          //               child: Column(
+                          //                 children: [
+                          //                   TimelineItemWidget(),
+                          //                   TimelineItemWidget(),
+                          //                 ],
+                          //               )
+                          //             ),
+                          //
+                          //
+                          //
+                          //             ],
+                          //           ),
+                          //
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
 
                           // Padding(
                           //   padding:  EdgeInsets.only(top: 58.h, left: 32.w),

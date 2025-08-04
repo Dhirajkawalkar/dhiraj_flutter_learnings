@@ -30,7 +30,7 @@ class TimelineItemWidget extends StatelessWidget {
                       Column(
                         children: [
                           Container(
-                            height: 200.h,
+                            height: isExpanded ? 200.h : 50.h,
                             width: 2.w,
                             color: Color(0xFF0E3B2C),
                           )
@@ -45,11 +45,16 @@ class TimelineItemWidget extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: Column(
+              child: isExpanded ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+
                 children:  [
                   NewDateButton(),
                   InsideInfo()
+                ],
+              ): Column(
+                children:  [
+                  NewDateButton(),
                 ],
               ),
             )
