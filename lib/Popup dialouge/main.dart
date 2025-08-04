@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:popup_dialouge/Popup%20dialouge/popup_screen.dart';
-import 'package:popup_dialouge/Popup%20dialouge/test_main.dart';
+import 'package:popup_dialouge/Popup%20dialouge/extra/test_main.dart';
 import 'package:timelines_plus/timelines_plus.dart';
-import 'journey_list.dart';
+import 'extra/journey_list.dart';
 import 'package:dash/dash.dart';
 
 void main(){
@@ -28,9 +28,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -41,12 +38,7 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (_) => Dialog(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: PopupScreen(), // Use your existing custom widget here .. . . . . . .
-            ),
+            builder: (_) => PopupScreen(),
           );
         },
         child: Icon(Icons.add),

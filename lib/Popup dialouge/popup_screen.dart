@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_line/dotted_line.dart';
-import 'package:popup_dialouge/Popup%20dialouge/test_main.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:popup_dialouge/Popup%20dialouge/list_widgets.dart';
+import 'package:popup_dialouge/Popup%20dialouge/extra/test_main.dart';
 import 'package:timelines_plus/timelines_plus.dart';
-import 'journey_list.dart';
+import 'extra/journey_list.dart';
 import 'package:dash/dash.dart';
 
 class PopupScreen extends StatefulWidget {
@@ -128,7 +130,8 @@ class _PopupScreenState extends State<PopupScreen> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(top: 12.0),
-                                      child: Icon(Icons.location_on_outlined, size: 20.sp, color: Color(0xFF0E3B2C)),
+                                       child: Icon(Icons.location_on_outlined, size: 20.sp, color: Color(0xFF0E3B2C)),
+
                                     ),
                                     SizedBox(width: 6.w),
                                     Expanded(
@@ -156,34 +159,54 @@ class _PopupScreenState extends State<PopupScreen> {
                             height: 46.h,
                             width: 280.w,
                             padding: EdgeInsets.symmetric(vertical: 12.h),
-
                             decoration: BoxDecoration(
-                                color: Color(0xffFFFFFF),
-                                borderRadius: BorderRadius.circular(6)
+                              color: Color(0xffFFFFFF),
+                              borderRadius: BorderRadius.circular(6),
                             ),
-
                             child: Center(
-                                child: Column(
-                                  children: [
-                                    Text("New Journey", style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xffCD4E00), fontSize: 14.sp),),
-                                  ],
-                                )
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "New Journey",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xffCD4E00),
+                                      fontSize: 14.sp,
+                                    ),
+                                  ),
+                                  SizedBox(height: 0.2.h), // spacing between text and line
+                                  Container(
+                                    width: 12.w, // adjust width as needed
+                                    height: 2.h,
+                                    color: Color(0xffCD4E00),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
 
-                          SizedBox(height: 2.h,),
 
-
-                          //Scrollable part  (Journey List Container)
-                          // Expanded(
-                          //   child: SingleChildScrollView(
-                          //     child: Column(
-                          //       children: [
-                          //         JourneyList(),
-                          //       ],
-                          //     ),
+                          // Container(
+                          //   height: 46.h,
+                          //   width: 280.w,
+                          //   padding: EdgeInsets.symmetric(vertical: 12.h),
+                          //
+                          //   decoration: BoxDecoration(
+                          //       color: Color(0xffFFFFFF),
+                          //       borderRadius: BorderRadius.circular(6)
+                          //   ),
+                          //
+                          //   child: Center(
+                          //       child: Column(
+                          //         children: [
+                          //           Text("New Journey", style: TextStyle(fontWeight: FontWeight.w500, color: Color(0xffCD4E00), fontSize: 14.sp),),
+                          //         ],
+                          //       )
                           //   ),
                           // ),
+
+                          SizedBox(height: 2.h,),
 
                           Expanded(
                             child: SingleChildScrollView(
@@ -212,189 +235,20 @@ class _PopupScreenState extends State<PopupScreen> {
                                             SizedBox(height: 6.64.h,),
                                           ],
                                         ),
-                                        //
-                                        //             Column(
-                                        //   children: [
-                                        //     SizedBox(
-                                        //       width: double.infinity,
-                                        //       child: Container(
-                                        //         width: 70.w,
-                                        //         child:
-                                        //         Row(                        //John doe and icon
-                                        //           children: [
-                                        //             Icon(Icons.person, size: 16.sp, color: Color(0xffCD4E00),),
-                                        //
-                                        //             SizedBox(width: 9.w,),
-                                        //
-                                        //             Text("John Doe (You)", style: TextStyle(fontSize: 10.sp, color: Color(0xffCD4E00),fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, letterSpacing: 0.25.sp,),),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //     SizedBox(height: 2.h,),
-                                        //
-                                        //     SizedBox(
-                                        //       width: double.infinity,
-                                        //       child: Container(
-                                        //         width: 70.w,
-                                        //         child:
-                                        //         Wrap(                        //John doe and icon
-                                        //           children: [
-                                        //             Text("Route ID - RMEREG02 CA SK Consumer Delivery Services 20250716 1", style: TextStyle(fontSize: 10.sp, color: Color(0xffCD4E00),fontStyle: FontStyle.normal, fontWeight: FontWeight.w400, letterSpacing: 0.25.sp,),),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //     SizedBox(height: 9.h,),
-                                        //
-                                        //     SizedBox(
-                                        //       width: double.infinity,
-                                        //
-                                        //       child: Column(
-                                        //         crossAxisAlignment: CrossAxisAlignment.start,
-                                        //         children: [
-                                        //
-                                        //           Stack(
-                                        //             children: [
-                                        //               Column(
-                                        //                 children: [
-                                        //
-                                        //                   SizedBox(height: 8.h,),
-                                        //                   Icon(Icons.blur_circular_outlined ,size: 16.sp, color: Color(0xff1C453B),),
-                                        //                   SizedBox(height: 6.5.h,),
-                                        //
-                                        //                   //Dashed line vertical
-                                        //                   Column(
-                                        //                     children: List.generate(
-                                        //                       3,
-                                        //                           (index) => Container(
-                                        //                         width: 1,
-                                        //                         height: 4,
-                                        //                         color: Color(0xff747E7A),
-                                        //                         margin: const EdgeInsets.symmetric(vertical: 2),
-                                        //                       ),
-                                        //                     ),
-                                        //                   ),
-                                        //
-                                        //                   SizedBox(height: 6.5.h,),
-                                        //
-                                        //                   Icon(Icons.location_on_outlined ,size: 16.sp, color: Color(0xff1C453B),),
-                                        //                 ],
-                                        //               ),
-                                        //
-                                        //
-                                        //               Column(
-                                        //                 crossAxisAlignment: CrossAxisAlignment.start,
-                                        //                 children: [
-                                        //                   Padding(
-                                        //                     padding:  EdgeInsets.only(left: 20.w),
-                                        //                     child: Text("Pickup from", style: TextStyle(fontSize: 8.sp),),
-                                        //                   ),
-                                        //
-                                        //                   Padding(
-                                        //                     padding:  EdgeInsets.only(top: 0, left: 20.w,bottom: 10.h),
-                                        //                     child: SizedBox(
-                                        //
-                                        //                       child: Text("1030 NORTH SERVICE RD. Moose Jaw, SK, Canada S6H 4P6", style: TextStyle(fontSize: 8.sp),),
-                                        //                     ),
-                                        //                   ),
-                                        //
-                                        //                   Padding(
-                                        //                     padding:  EdgeInsets.only(bottom: 1.h, left: 20.w),
-                                        //                     child: Text("Delivery at", style: TextStyle(fontSize: 8.sp),),
-                                        //                   ),
-                                        //
-                                        //                   Padding(
-                                        //                     padding:  EdgeInsets.only(left: 20.w, bottom: 10.h),
-                                        //                     child: SizedBox(
-                                        //
-                                        //                       child: Text("Ziing Regina 1421 Fleury St Regina, SK, Canada S4N7N56", style: TextStyle(fontSize: 8.sp),),
-                                        //                     ),
-                                        //                   ),
-                                        //
-                                        //
-                                        //                 ],
-                                        //               )
-                                        //
-                                        //             ],
-                                        //           ),
-                                        //
-                                        //
-                                        //
-                                        //         ],
-                                        //       ),
-                                        //     )
-                                        //   ],
-                                        // ),
+
+
 
                                         SizedBox(height: 6.64.h,),
-                                        TimelineItemWidget(),
-                                        TimelineItemWidget(),
 
+                                      Expanded(
+                                        child: Column(
+                                          children: [
+                                            TimelineItemWidget(),
+                                            TimelineItemWidget(),
+                                          ],
+                                        )
+                                      ),
 
-                                        // Stack(
-                                        //   children: [
-                                        //     Padding(
-                                        //       padding:  EdgeInsets.only(left: 17.w),
-                                        //       child: Column(
-                                        //         children: [
-                                        //           Container(
-                                        //             width: 4.w,
-                                        //             height: 500, // set height based on content
-                                        //             color: Color(0xFF124734), // green color
-                                        //           ),
-                                        //         ],
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //     Padding(
-                                        //       padding:  EdgeInsets.only(bottom: 228.h),
-                                        //       child: Container(
-                                        //         child: Column(
-                                        //           crossAxisAlignment: CrossAxisAlignment.start,
-                                        //           children: [
-                                        //             NewDateButton(),
-                                        //            InsideInfo(),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //
-                                        //     Padding(
-                                        //       padding:  EdgeInsets.only(top: 228.h),
-                                        //       child: Container(
-                                        //         padding: EdgeInsets.only(bottom: 20),
-                                        //         child: Column(
-                                        //           crossAxisAlignment: CrossAxisAlignment.start,
-                                        //           children: [
-                                        //             NewDateButton(),
-                                        //             InsideInfo(),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //     Padding(
-                                        //       padding:  EdgeInsets.only(top: 428.h),
-                                        //       child: Container(
-                                        //         padding: EdgeInsets.only(bottom: 20),
-                                        //         child: Column(
-                                        //           crossAxisAlignment: CrossAxisAlignment.start,
-                                        //           children: [
-                                        //             NewDateButton(),
-                                        //             InsideInfo(),
-                                        //           ],
-                                        //         ),
-                                        //       ),
-                                        //     ),
-                                        //
-                                        //
-                                        //
-                                        //   ],
-                                        // ),
 
 
                                       ],

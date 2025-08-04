@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:popup_dialouge/Popup dialouge/list_widgets.dart';
 
 
@@ -53,68 +47,6 @@ import 'package:popup_dialouge/Popup dialouge/list_widgets.dart';
 
 
 //Working
-
-class TimelineItemWidget extends StatelessWidget {
-  const TimelineItemWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      // height: 230.h, // Total height for each block
-      child: Stack(
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Left Timeline Bar with Nodes
-              SizedBox(
-                width: 30.w,
-                child: Column(
-                  children: [
-                    // Start Node
-                    SizedBox(height: 8.h),
-                    SizedBox(height: 6.h),
-
-                    // Dashed line
-                    Column(
-                      children: [
-                        Container(
-                          height: 200.h,
-                          width: 2.w,
-                          color: Color(0xFF0E3B2C),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
-              // Right Side Content
-
-            ],
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                NewDateButton(),
-                InsideInfo(),
-              ],
-            ),
-          )
-        ],
-      )
-    );
-  }
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -559,13 +491,13 @@ class BottomButtons extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              TextButton(onPressed: (){}, child: Text("Dismiss", style: TextStyle(fontSize: 14.sp, decoration: TextDecoration.underline, color: Color(0xff1C453B)),)),
+              TextButton(onPressed: (){
+                Navigator.pop(context);
+              }, child: Text("Dismiss", style: TextStyle(fontSize: 14.sp, decoration: TextDecoration.underline, color: Color(0xff1C453B)),)),
 
               SizedBox(width: 8.w,),
 
               TextButton(onPressed: (){}, child: Text("Add to Route",  style: TextStyle(fontSize: 14.sp , decoration: TextDecoration.underline, color: Color(0xffCD4E00)),)),
-
-
             ],
           ),
         ),

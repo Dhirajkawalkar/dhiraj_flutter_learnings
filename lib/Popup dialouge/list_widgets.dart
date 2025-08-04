@@ -1,9 +1,91 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class InsideInfo extends StatelessWidget {
+
+
+class TimelineItemWidget extends StatelessWidget {
+
+  bool isExpanded = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // height: 230.h, // Total height for each block
+        child: Stack(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Left Timeline Bar with Nodes
+                SizedBox(
+                  width: 30.w,
+                  child: Column(
+                    children: [
+                      // Start Node
+                      SizedBox(height: 8.h),
+                      SizedBox(height: 6.h),
+
+                      // Dashed line
+                      Column(
+                        children: [
+                          Container(
+                            height: 200.h,
+                            width: 2.w,
+                            color: Color(0xFF0E3B2C),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Right Side Content
+
+              ],
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children:  [
+                  NewDateButton(),
+                  InsideInfo()
+                ],
+              ),
+            )
+          ],
+        )
+    );
+  }
+}
+
+
+class CustomData extends StatelessWidget {
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:  [
+          NewDateButton(),
+          InsideInfo(),
+        ],
+      ),
+    );
+  }
+}
+
+
+class InsideInfo extends StatefulWidget {
   const InsideInfo({super.key});
 
+  @override
+  State<InsideInfo> createState() => _InsideInfoState();
+}
+
+class _InsideInfoState extends State<InsideInfo> {
   @override
   Widget build(BuildContext context) {
     return  Padding(
@@ -124,31 +206,38 @@ class InsideInfo extends StatelessWidget {
   }
 }
 
-class NewDateButton extends StatelessWidget {
-  const NewDateButton({super.key});
+class NewDateButton extends StatefulWidget {
+  @override
+  State<NewDateButton> createState() => _NewDateButtonState();
+}
+
+class _NewDateButtonState extends State<NewDateButton> {
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 26.h,
-      width: 116.w,
-      padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
+    return InkWell(
 
-      decoration: BoxDecoration(
-          color: Color(0xff1C453B),
-          borderRadius: BorderRadius.circular(30)
+      child: Container(
+        height: 26.h,
+        width: 116.w,
+        padding: EdgeInsets.symmetric(vertical: 4.h, horizontal: 8.w),
+
+        decoration: BoxDecoration(
+            color: Color(0xff1C453B),
+            borderRadius: BorderRadius.circular(30)
+        ),
+
+        child: Row(
+          children: [
+            SizedBox(width: 8.w,),
+            Text("Jan 24, 2025", style: TextStyle(color: Color(0xffFFFFFF), fontSize: 10.sp),),
+
+            SizedBox(width: 8.w,),
+            Icon(Icons.keyboard_arrow_up, size: 18.sp, color: Color(0xffFFFFFF),),
+          ],
+        ),
       ),
-
-      child: Row(
-        children: [
-          SizedBox(width: 8.w,),
-          Text("Jan 24, 2025", style: TextStyle(color: Color(0xffFFFFFF), fontSize: 10.sp),),
-
-          SizedBox(width: 8.w,),
-          Icon(Icons.keyboard_arrow_up, size: 18.sp, color: Color(0xffFFFFFF),)
-        ],
-      ),
-
     );
   }
 }
