@@ -1,11 +1,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 
 
-class TimelineItemWidget extends StatelessWidget {
+//Timeline widget containing the greenline, Datebutton and inside info
+class TimelineItemWidget extends StatefulWidget {
+  @override
+  State<TimelineItemWidget> createState() => _TimelineItemWidgetState();
+}
 
+class _TimelineItemWidgetState extends State<TimelineItemWidget> {
   bool isExpanded = true;
 
   @override
@@ -22,11 +28,7 @@ class TimelineItemWidget extends StatelessWidget {
                   width: 30.w,
                   child: Column(
                     children: [
-                      // Start Node
-                      SizedBox(height: 8.h),
-                      SizedBox(height: 6.h),
-
-                      // Dashed line
+                      // Green line
                       Column(
                         children: [
                           Container(
@@ -39,7 +41,6 @@ class TimelineItemWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 // Right Side Content
 
               ],
@@ -49,8 +50,14 @@ class TimelineItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children:  [
-                  NewDateButton(),
-                  InsideInfo()
+                  NewDateButton(tapHandler: () {
+                    setState(() {
+                      isExpanded = !isExpanded;
+                      print("isExpanded : ${isExpanded}");
+                    });
+                  }, isExpanded: isExpanded,),
+                   isExpanded ? InsideInfo() : SizedBox(),
+                  //SizedBox()
                 ],
             ),
             )
@@ -61,24 +68,8 @@ class TimelineItemWidget extends StatelessWidget {
 }
 
 
-class CustomData extends StatelessWidget {
 
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:  [
-          NewDateButton(),
-          InsideInfo(),
-        ],
-      ),
-    );
-  }
-}
-
-
+//Inside information and route
 class InsideInfo extends StatefulWidget {
   const InsideInfo({super.key});
 
@@ -207,7 +198,13 @@ class _InsideInfoState extends State<InsideInfo> {
   }
 }
 
+
+
+//Green Date button
 class NewDateButton extends StatefulWidget {
+  final Function() tapHandler;
+  bool isExpanded;
+  NewDateButton({required this.tapHandler, required this.isExpanded});
   @override
   State<NewDateButton> createState() => _NewDateButtonState();
 }
@@ -217,8 +214,10 @@ class _NewDateButtonState extends State<NewDateButton> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-
+    return GestureDetector(
+       onTap: () {
+         widget.tapHandler();
+       },
       child: Container(
         height: 26.h,
         width: 116.w,
@@ -235,7 +234,52 @@ class _NewDateButtonState extends State<NewDateButton> {
             Text("Jan 24, 2025", style: TextStyle(color: Color(0xffFFFFFF), fontSize: 10.sp),),
 
             SizedBox(width: 8.w,),
-            Icon(Icons.keyboard_arrow_up, size: 18.sp, color: Color(0xffFFFFFF),),
+            Icon(widget.isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 18.sp, color: Color(0xffFFFFFF),),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+//New journey Container
+class WhiteBox extends StatelessWidget {
+  final String textContent;
+  WhiteBox(
+      this.textContent,
+      );
+
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+      height: 46.h,
+      width: 280.w,
+      padding: EdgeInsets.symmetric(vertical: 12.h),
+      decoration: BoxDecoration(
+        color: Color(0xffFFFFFF),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              textContent,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                color: Color(0xffCD4E00),
+                fontSize: 14.sp,
+              ),
+            ),
+            SizedBox(height: 0.2.h), // spacing between text and line
+            Container(
+              width: 12.w, // adjust width as needed
+              height: 0.8.h,
+              color: Color(0xffCD4E00),
+            ),
           ],
         ),
       ),
