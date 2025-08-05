@@ -45,18 +45,14 @@ class TimelineItemWidget extends StatelessWidget {
               ],
             ),
             Expanded(
-              child: isExpanded ? Column(
+              child : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
 
                 children:  [
                   NewDateButton(),
                   InsideInfo()
                 ],
-              ): Column(
-                children:  [
-                  NewDateButton(),
-                ],
-              ),
+            ),
             )
           ],
         )
