@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:popup_dialouge/Popup%20dialouge/clean_main_content.dart';
 import 'package:popup_dialouge/Popup%20dialouge/list_widgets.dart';
 import 'package:popup_dialouge/Popup%20dialouge/extra/test_main.dart';
 import 'package:popup_dialouge/Popup%20dialouge/main_content.dart';
@@ -33,7 +34,7 @@ class _PopupScreenState extends State<PopupScreen> {
             child: Stack(
               children: [
                 //Main Ui
-               MainContent(),
+               CleanMainContent(),
 
 
                 //Scrollbar

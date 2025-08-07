@@ -16,53 +16,56 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // height: 230.h, // Total height for each block
-        child: Stack(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Left Timeline Bar with Nodes
-                SizedBox(
-                  width: 30.w,
-                  child: Column(
-                    children: [
-                      // Green line
-                      Column(
-                        children: [
-                          Container(
-                            height: isExpanded ? 200.h : 50.h,
-                            width: 2.w,
-                            color: Color(0xFF0E3B2C),
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                // Right Side Content
-
-              ],
-            ),
-            Expanded(
-              child : Column(
+    return Padding(
+      padding: const EdgeInsets.only(right: 12.0),
+      child: SizedBox(
+        // height: 230.h, // Total height for each block
+          child: Stack(
+            children: [
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Left Timeline Bar with Nodes
+                  SizedBox(
+                    width: 30.w,
+                    child: Column(
+                      children: [
+                        // Green line
+                        Column(
+                          children: [
+                            Container(
+                              height: isExpanded ? 200.h : 50.h,
+                              width: 2.w,
+                              color: Color(0xFF0E3B2C),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  // Right Side Content
 
-                children:  [
-                  NewDateButton(tapHandler: () {
-                    setState(() {
-                      isExpanded = !isExpanded;
-                      print("isExpanded : ${isExpanded}");
-                    });
-                  }, isExpanded: isExpanded,),
-                   isExpanded ? InsideInfo() : SizedBox(),
-                  //SizedBox()
                 ],
-            ),
-            )
-          ],
-        )
+              ),
+              Expanded(
+                child : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                  children:  [
+                    NewDateButton(tapHandler: () {
+                      setState(() {
+                        isExpanded = !isExpanded;
+                        print("isExpanded : ${isExpanded}");
+                      });
+                    }, isExpanded: isExpanded,),
+                     isExpanded ? InsideInfo() : SizedBox(),
+                    //SizedBox()
+                  ],
+              ),
+              )
+            ],
+          )
+      ),
     );
   }
 }
@@ -91,7 +94,7 @@ class _InsideInfoState extends State<InsideInfo> {
               child:
               Row(                        //John doe and icon
                 children: [
-                  Icon(Icons.person, size: 16.sp, color: Color(0xffCD4E00),),
+                  SvgPicture.asset('image/person2.svg',),
 
                   SizedBox(width: 9.w,),
 
@@ -130,8 +133,8 @@ class _InsideInfoState extends State<InsideInfo> {
                     Column(
                       children: [
 
-                        SizedBox(height: 8.h,),
-                        Icon(Icons.blur_circular_outlined ,size: 16.sp, color: Color(0xff1C453B),),
+                        SizedBox(height: 4.h,),
+                       Icon(Icons.ac_unit, size: 16.sp,),
                         SizedBox(height: 6.5.h,),
 
                         //Dashed line vertical
@@ -149,7 +152,7 @@ class _InsideInfoState extends State<InsideInfo> {
 
                         SizedBox(height: 6.5.h,),
 
-                        Icon(Icons.location_on_outlined ,size: 16.sp, color: Color(0xff1C453B),),
+                        SvgPicture.asset('image/location.svg'),
                       ],
                     ),
 

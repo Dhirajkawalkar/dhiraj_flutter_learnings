@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:timelines_plus/timelines_plus.dart';
+import '../parts.dart';
 import 'journey_list.dart';
 import 'package:dash/dash.dart';
 
