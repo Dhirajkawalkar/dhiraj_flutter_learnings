@@ -34,7 +34,7 @@ class _TimelineItemWidgetState extends State<TimelineItemWidget> {
                         Column(
                           children: [
                             Container(
-                              height: isExpanded ? 200.h : 50.h,
+                              height: isExpanded ? 208.h : 50.h,
                               width: 2.w,
                               color: Color(0xFF0E3B2C),
                             )
@@ -133,8 +133,12 @@ class _InsideInfoState extends State<InsideInfo> {
                     Column(
                       children: [
 
-                        SizedBox(height: 4.h,),
-                       Icon(Icons.ac_unit, size: 16.sp,),
+                        SizedBox(height: 18.h,),
+                       SizedBox(
+                         height: 18.sp,
+                           width: 18.sp,
+                           child: SvgPicture.asset('image/control.svg')
+                       ),
                         SizedBox(height: 6.5.h,),
 
                         //Dashed line vertical
@@ -142,15 +146,19 @@ class _InsideInfoState extends State<InsideInfo> {
                           children: List.generate(
                             3,
                                 (index) => Container(
-                              width: 1,
-                              height: 4,
-                              color: Color(0xff747E7A),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Color(0xff747E7A),
+                                  ),
+                              width: 1.8,
+                              height:   5,
+
                               margin: const EdgeInsets.symmetric(vertical: 2),
                             ),
                           ),
                         ),
 
-                        SizedBox(height: 6.5.h,),
+                        SizedBox(height: 8.h,),
 
                         SvgPicture.asset('image/location.svg'),
                       ],
@@ -161,12 +169,12 @@ class _InsideInfoState extends State<InsideInfo> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding:  EdgeInsets.only(left: 20.w),
-                          child: Text("Pickup from", style: TextStyle(fontSize: 8.sp),),
+                          padding:  EdgeInsets.only(left: 23.w,bottom: 7.h),
+                          child: Text("Pickup from", style: TextStyle(fontSize: 8.sp, fontWeight: FontWeight.w400, color: Color(0xff747E7A)),),
                         ),
 
                         Padding(
-                          padding:  EdgeInsets.only(top: 0, left: 20.w,bottom: 10.h),
+                          padding:  EdgeInsets.only(top: 0, left: 23.w,bottom: 16.h),
                           child: SizedBox(
 
                             child: Text("1030 NORTH SERVICE RD. Moose Jaw, SK, Canada S6H 4P6", style: TextStyle(fontSize: 8.sp),),
@@ -174,12 +182,12 @@ class _InsideInfoState extends State<InsideInfo> {
                         ),
 
                         Padding(
-                          padding:  EdgeInsets.only(bottom: 1.h, left: 20.w),
-                          child: Text("Delivery at", style: TextStyle(fontSize: 8.sp),),
+                          padding:  EdgeInsets.only(bottom: 7.h, left: 23.w),
+                          child: Text("Delivery at", style: TextStyle(fontSize: 8.sp, fontWeight: FontWeight.w400, color: Color(0xff747E7A)),),
                         ),
 
                         Padding(
-                          padding:  EdgeInsets.only(left: 20.w, bottom: 10.h),
+                          padding:  EdgeInsets.only(left: 23.w, bottom: 10.h),
                           child: SizedBox(
 
                             child: Text("Ziing Regina 1421 Fleury St Regina, SK, Canada S4N7N56", style: TextStyle(fontSize: 8.sp),),

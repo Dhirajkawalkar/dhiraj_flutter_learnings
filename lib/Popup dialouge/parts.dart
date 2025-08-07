@@ -156,7 +156,7 @@ class ScrollableTimelineBox extends StatelessWidget {
       TimelineItemWidget(),
     ];
 
-    double dynamicHeight =(timelineItems.length * 270); // +100 for top content like warning
+    double dynamicHeight =(timelineItems.length * 277); // Height multiplied by number of items
 
     return Scrollbar(
       child: Padding(

@@ -31,7 +31,7 @@ class _CleanMainContentState extends State<CleanMainContent> {
         child:  Column(
           children: [
             Container(
-                padding: EdgeInsets.only(top: 24, left: 16, right: 15),
+                padding: EdgeInsets.only(top: 24, left: 24, right: 15),
                 child: SizedBox(child: TitleBar(titleText: "Add parcel to your route?"))),
 
             Expanded(
@@ -40,16 +40,18 @@ class _CleanMainContentState extends State<CleanMainContent> {
                   /// First container - scrolls away
                   SliverToBoxAdapter(
                     child: Container(
-                        padding: EdgeInsets.only( left: 16, bottom: 24, right: 15),
+                        padding: EdgeInsets.only( left: 24, bottom: 24, right: 15),
                       child: TextContent()
                     ),
                   ),
 
                   /// Second container - sticky header
                   SliverStickyHeader(
+                    //overlapsContent: true,
+                    //sticky: false,
                     header: Container(
-                      // height: 100,
-                      padding: EdgeInsets.only(left: 16, right: 15),
+                      // height: 170,
+                      padding: EdgeInsets.only(left: 24, right: 15),
                       color: Color(0xffFAF0E8),
                       // alignment: Alignment.center,
                       child: Padding(
@@ -93,29 +95,32 @@ class _CleanMainContentState extends State<CleanMainContent> {
                                 SizedBox(width: 8.w,),
 
                                 Expanded(
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 12.0),
-                                        child: SvgPicture.asset('image/location.svg'),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 14),
+                                    child: Row(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 2),
+                                          child: SvgPicture.asset('image/location.svg'),
 
-                                      ),
-                                      SizedBox(width: 6.w),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(top: 12.0),
-                                          child: Text(
-                                            "4149 39TH STREET, ABT4V 3X8",
-                                            style: TextStyle(
-                                              fontSize: 10.sp,
-                                              fontWeight: FontWeight.w600,
-                                              color: Color(0xFF0E3B2C),
+                                        ),
+                                        SizedBox(width: 6.w),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(top: 0, right: 0),
+                                            child: Text(
+                                              "4149 39TH STREET, AB, T4V 3X8",
+                                              style: TextStyle(
+                                                fontSize: 10.sp,
+                                                fontWeight: FontWeight.w600,
+                                                color: Color(0xFF0E3B2C),
+                                              ),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -130,6 +135,7 @@ class _CleanMainContentState extends State<CleanMainContent> {
                     ),
 
                     sliver:  SliverFillRemaining(
+                      fillOverscroll: false,
                       hasScrollBody: true,
                       child: SizedBox(
                           child: ScrollbarTheme(
@@ -149,8 +155,9 @@ class _CleanMainContentState extends State<CleanMainContent> {
                                 trackVisibility: true, // Required to show the track
                                 interactive: true,
                                 child: SingleChildScrollView(
+                                  physics: NeverScrollableScrollPhysics(),
                                   child: Container(
-                                      padding: EdgeInsets.only(left: 18, bottom: 24,right: 14),
+                                      padding: EdgeInsets.only(left: 24, bottom: 24,right: 14),
                                       child: ScrollableTimelineBox()),
                                 ),
                               ),
@@ -169,6 +176,3 @@ class _CleanMainContentState extends State<CleanMainContent> {
     );
   }
 }
-
-
-
